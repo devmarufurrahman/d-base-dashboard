@@ -1,0 +1,33 @@
+.app {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+}
+
+.AppHeader {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 14px 30px;
+	border-bottom: rgba(0, 0, 0, 0.15);
+}
+.AppFooter {
+	height: 50px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+
+	border-top: rgba(0, 0, 0, 0.15);
+}
+.sideMenuAndPageContent {
+	display: flex;
+	flex: 1;
+	justify-content: flex-start;
+	align-items: self-start;
+}
+.PageContent {
+}
+.SideMenu {
+}
