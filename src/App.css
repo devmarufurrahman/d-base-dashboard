@@ -6,12 +6,14 @@
 }
 
 .AppHeader {
-	height: 50px;
+	height: 60px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 14px 30px;
-	border-bottom: rgba(0, 0, 0, 0.15);
+
+	padding: 20px 40px 20px 20px;
+	border-bottom: rgba(0, 0, 0, 0.05);
+	background-color: rgb(236, 243, 250);
 }
 .AppFooter {
 	height: 50px;

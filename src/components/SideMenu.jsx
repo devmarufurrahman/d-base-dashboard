@@ -1,36 +1,3 @@
-// import { Menu } from "antd";
-
-// const SideMenu = () => {
-// 	return (
-// 		<div className="SideMenu">
-// 			<Menu
-// 				onClick={(item) => {
-// 					item;
-// 				}}
-// 				items={[
-// 					{
-// 						label: "Dashboard",
-// 						key: "/",
-// 					},
-// 					{
-// 						label: "Course",
-// 						key: "/course",
-// 					},
-// 					{
-// 						label: "Orders",
-// 						key: "/orders",
-// 					},
-// 					{
-// 						label: "Students",
-// 						key: "/students",
-// 					},
-// 				]}></Menu>
-// 		</div>
-// 	);
-// };
-
-// export default SideMenu;
-
 import {
 	MenuFoldOutlined,
 	TeamOutlined,
@@ -104,8 +71,8 @@ const SideMenu = () => {
 						onClick={() => setCollapsed(!collapsed)}
 						style={{
 							fontSize: "16px",
-							width: 64,
-							height: 64,
+							width: 50,
+							height: 50,
 						}}
 					/>
 				</Header>

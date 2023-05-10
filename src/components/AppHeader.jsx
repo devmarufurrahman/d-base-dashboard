@@ -5,8 +5,8 @@ import logo from "../asset/dabse.png";
 const AppHeader = () => {
 	return (
 		<div className="AppHeader">
-			<Image src={logo} width={150}></Image>
-			<Typography.Title>D-Base Dashboard</Typography.Title>
+			<Image preview={false} src={logo} width={150}></Image>
+			<Typography.Title>Admin</Typography.Title>
 			<Space>
 				<Badge count={10}>
 					<MailOutlined style={{ fontSize: 24 }} />
