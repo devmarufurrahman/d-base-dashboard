@@ -7,7 +7,27 @@ import {
 	TeamOutlined,
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { getOrders } from "../api/ApiCart";
+import { getOrders, getRevenue } from "../api/ApiCart";
+
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+
+ChartJS.register(
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend,
+);
 
 const Dashboard = () => {
 	const iconStyle = {
@@ -47,8 +67,9 @@ const Dashboard = () => {
 					value={1234}
 				/>
 			</Space>
-			<Space>
+			<Space size={10} direction="horizontal">
 				<RecentOrders />
+				<DashboardChart />
 			</Space>
 		</Space>
 	);
@@ -99,6 +120,56 @@ function RecentOrders() {
 				loading={loading}
 				dataSource={dataSource}></Table>
 		</>
+	);
+}
+
+function DashboardChart() {
+	const [revenue, setRevenue] = useState({
+		labels: [],
+		datasets: [],
+	});
+
+	useEffect(() => {
+		getRevenue().then((res) => {
+			const labels = res.carts.map((cart) => {
+				return `User-${cart.userId}`;
+			});
+			const data = res.carts.map((cart) => {
+				return cart.discountedTotal;
+			});
+
+			const dataSource = {
+				labels,
+				datasets: [
+					{
+						label: "Revenue",
+						data: data,
+						backgroundColor: "#0A396D",
+					},
+				],
+			};
+
+			setRevenue(dataSource);
+		});
+	}, []);
+
+	const options = {
+		responsive: true,
+		plugins: {
+			legend: {
+				position: "bottom",
+			},
+			title: {
+				display: true,
+				text: "Order Revenue",
+			},
+		},
+	};
+
+	return (
+		<Card style={{ width: 500, height: 350 }}>
+			<Bar options={options} data={revenue} />
+		</Card>
 	);
 }
 
