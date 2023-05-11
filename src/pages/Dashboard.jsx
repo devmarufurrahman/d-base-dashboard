@@ -167,7 +167,7 @@ function DashboardChart() {
 	};
 
 	return (
-		<Card style={{ width: 500, height: 350 }}>
+		<Card style={{ width: 500, height: 320 }}>
 			<Bar options={options} data={revenue} />
 		</Card>
 	);
