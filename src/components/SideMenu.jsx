@@ -8,27 +8,40 @@ import {
 	ShoppingOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const { Header, Sider } = Layout;
 const SideMenu = () => {
+	const location = useLocation();
+	const [selectedKeys, setSelectedKeys] = useState("/");
+
+	useEffect(() => {
+		const pathName = location.pathname;
+		setSelectedKeys(pathName);
+	}, [location.pathname]);
+
 	const [collapsed, setCollapsed] = useState(false);
 	const navigate = useNavigate();
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
 	return (
-		<Layout>
+		<Layout
+			style={{
+				minHeight: "100vh",
+			}}>
 			<Sider trigger={null} collapsible collapsed={collapsed}>
 				<div className="logo" />
 
 				<Menu
+					className="verticalHeight"
 					onClick={(item) => {
 						navigate(item.key);
 					}}
+					selectedKeys={[selectedKeys]}
 					theme="light"
-					mode="inline"
+					mode="vertical"
 					defaultSelectedKeys={["1"]}
 					items={[
 						{

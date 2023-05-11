@@ -7,7 +7,13 @@ import {
 	TeamOutlined,
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { getOrders, getRevenue } from "../api/ApiCart";
+import {
+	getOrders,
+	getPost,
+	getProduct,
+	getRevenue,
+	getUsers,
+} from "../api/ApiCart";
 
 import {
 	Chart as ChartJS,
@@ -30,6 +36,28 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
+	const [orders, setOrders] = useState(0);
+	const [courses, setCourses] = useState(0);
+	const [blog, setBlog] = useState(0);
+	const [students, setStudents] = useState(0);
+	const [revenue, setRevenue] = useState(0);
+
+	useEffect(() => {
+		getOrders().then((res) => {
+			setOrders(res.total);
+			setRevenue(res.discountedTotal);
+		});
+		getProduct().then((res) => {
+			setCourses(res.total);
+		});
+		getPost().then((res) => {
+			setBlog(res.total);
+		});
+		getUsers().then((res) => {
+			setStudents(res.total);
+		});
+	}, []);
+
 	const iconStyle = {
 		color: "green",
 		backgroundColor: "rgba(0,255,0,0.25",
@@ -42,29 +70,29 @@ const Dashboard = () => {
 			<Typography.Title level={3}>Dashboard</Typography.Title>
 			<Space direction="horizontal">
 				<DashboardCard
-					icon={<ReadOutlined style={iconStyle} />}
+					icon={<ShoppingCartOutlined style={iconStyle} />}
 					title={"Orders"}
-					value={1234}
+					value={orders}
 				/>
 				<DashboardCard
-					icon={<ShoppingCartOutlined style={iconStyle} />}
+					icon={<ReadOutlined style={iconStyle} />}
 					title={"Courses"}
-					value={1234}
+					value={courses}
 				/>
 				<DashboardCard
 					icon={<ScheduleOutlined style={iconStyle} />}
 					title={"Blogs"}
-					value={1234}
+					value={blog}
 				/>
 				<DashboardCard
 					icon={<TeamOutlined style={iconStyle} />}
 					title={"Students"}
-					value={1234}
+					value={students}
 				/>
 				<DashboardCard
 					icon={<DollarCircleOutlined style={iconStyle} />}
 					title={"Revenue"}
-					value={1234}
+					value={revenue}
 				/>
 			</Space>
 			<Space size={10} direction="horizontal">

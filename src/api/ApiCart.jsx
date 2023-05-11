@@ -17,3 +17,7 @@ export const getUsers = () => {
 export const getPost = () => {
 	return fetch("https://dummyjson.com/posts").then((res) => res.json());
 };
+
+export const getMail = () => {
+	return fetch("https://dummyjson.com/comments").then((res) => res.json());
+};
