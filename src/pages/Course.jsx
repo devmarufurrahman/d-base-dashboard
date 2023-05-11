@@ -1,4 +1,4 @@
-import { Space, Table, Typography } from "antd";
+import { Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { getProduct } from "../api/ApiCart";
 
@@ -9,6 +9,7 @@ const Course = () => {
 	useEffect(() => {
 		setLoading(true);
 		getProduct().then((res) => {
+			setLoading(false);
 			setDataSource(res.products);
 		});
 	}, []);
@@ -16,6 +17,7 @@ const Course = () => {
 		<Space size={20} direction="vertical">
 			<Typography.Title level={3}>Course</Typography.Title>
 			<Table
+				loading={loading}
 				columns={[
 					{
 						title: "Course Name",
@@ -24,6 +26,12 @@ const Course = () => {
 					{
 						title: "Price",
 						dataIndex: "price",
+						render: (value) => (
+							<span>
+								<span style={{ fontSize: 24 }}>৳ </span>
+								{value}
+							</span>
+						),
 					},
 					{
 						title: "Category",
@@ -32,6 +40,9 @@ const Course = () => {
 					{
 						title: "Rating",
 						dataIndex: "rating",
+						render: (rating) => {
+							return <Rate value={rating} allowHalf disabled />;
+						},
 					},
 					{
 						title: "Discount",
@@ -42,7 +53,10 @@ const Course = () => {
 						dataIndex: "stock",
 					},
 				]}
-				dataSource={dataSource}></Table>
+				dataSource={dataSource}
+				pagination={{
+					pageSize: 5,
+				}}></Table>
 		</Space>
 	);
 };

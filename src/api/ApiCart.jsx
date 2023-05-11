@@ -9,3 +9,11 @@ export const getRevenue = () => {
 export const getProduct = () => {
 	return fetch("https://dummyjson.com/products").then((res) => res.json());
 };
+
+export const getUsers = () => {
+	return fetch("https://dummyjson.com/users").then((res) => res.json());
+};
+
+export const getPost = () => {
+	return fetch("https://dummyjson.com/posts").then((res) => res.json());
+};
