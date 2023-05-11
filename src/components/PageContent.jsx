@@ -9,15 +9,18 @@ const PageContent = () => {
 	} = theme.useToken();
 	return (
 		<div className="PageContent">
-			<Content
-				style={{
-					margin: "24px 16px",
-					padding: 40,
-					minHeight: 280,
-					background: colorBgContainer,
-				}}>
-				<AppRoutes />
-			</Content>
+			<Layout theme="dark">
+				<Content
+					style={{
+						margin: "24px 16px",
+						padding: 40,
+						minHeight: 280,
+						background: colorBgContainer,
+						width: "100vw",
+					}}>
+					<AppRoutes />
+				</Content>
+			</Layout>
 		</div>
 	);
 };

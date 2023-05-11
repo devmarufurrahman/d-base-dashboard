@@ -1,5 +1,12 @@
-import { Badge, Drawer, Image, List, Space, Typography } from "antd";
-import { BellFilled, MailOutlined } from "@ant-design/icons";
+import { Badge, Drawer, Image, List, Space, Typography, Dropdown } from "antd";
+import {
+	BellFilled,
+	LockOutlined,
+	LogoutOutlined,
+	MailOutlined,
+	ProfileOutlined,
+	UserOutlined,
+} from "@ant-design/icons";
 import logo from "../asset/dabse.png";
 import { useEffect, useState } from "react";
 import { getMail, getOrders } from "../api/ApiCart";
@@ -18,11 +25,34 @@ const AppHeader = () => {
 		});
 	}, []);
 
+	const items = [
+		{
+			label: "My Profile",
+			key: "1",
+			icon: <UserOutlined />,
+		},
+		{
+			label: "Profile Update",
+			key: "2",
+			icon: <ProfileOutlined />,
+		},
+		{
+			label: "Change Password",
+			key: "3",
+			icon: <LockOutlined />,
+		},
+		{
+			label: "Sing Out",
+			key: "4",
+			icon: <LogoutOutlined />,
+		},
+	];
+
 	return (
 		<div className="AppHeader">
 			<Image preview={false} src={logo} width={150}></Image>
-			<Typography.Title>Admin</Typography.Title>
-			<Space>
+
+			<Space size={30}>
 				<Badge count={mail.length} dot>
 					<MailOutlined
 						style={{ fontSize: 24 }}
@@ -39,6 +69,26 @@ const AppHeader = () => {
 						}}
 					/>
 				</Badge>
+
+				<Dropdown
+					menu={{
+						items,
+					}}>
+					<a onClick={(e) => e.preventDefault()}>
+						<Space>
+							<UserOutlined
+								style={{
+									fontSize: 24,
+									color: "green",
+									backgroundColor: "rgba(0,255,0,0.25",
+									borderRadius: 20,
+									padding: 8,
+									cursor: "pointer",
+								}}
+							/>
+						</Space>
+					</a>
+				</Dropdown>
 			</Space>
 			<Drawer
 				title="Mails"
