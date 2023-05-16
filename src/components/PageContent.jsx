@@ -9,7 +9,7 @@ const PageContent = () => {
 	} = theme.useToken();
 	return (
 		<div className="PageContent">
-			<Layout theme="dark">
+			<Layout>
 				<Content
 					style={{
 						margin: "24px 16px",
