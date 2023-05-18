@@ -1,4 +1,4 @@
-import { Avatar, Rate, Space, Table, Typography } from "antd";
+import { Avatar, Button, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { getUsers } from "../api/ApiCart";
 
@@ -43,10 +43,6 @@ const Students = () => {
 						dataIndex: "email",
 					},
 					{
-						title: "Phone",
-						dataIndex: "phone",
-					},
-					{
 						title: "Address",
 						dataIndex: "address",
 						render: (address) => {
@@ -56,6 +52,13 @@ const Students = () => {
 								</span>
 							);
 						},
+					},
+					{
+						title: "Phone",
+						dataIndex: "phone",
+					},
+					{
+						title: "Action",
 					},
 				]}
 				dataSource={dataSource}

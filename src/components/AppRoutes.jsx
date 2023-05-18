@@ -5,6 +5,7 @@ import Students from "../pages/Students";
 import Blog from "../pages/Blog";
 import Orders from "../pages/Orders";
 import StudentModify from "../pages/StudentModify";
+import CourseModify from "../pages/CourseModify";
 
 const AppRoutes = () => {
 	return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
 				<Route path="/blog" element={<Blog />} />
 				<Route path="/orders" element={<Orders />} />
 				<Route path="/student-modify" element={<StudentModify />} />
+				<Route path="/course-edit" element={<CourseModify />} />
 			</Routes>
 		</>
 	);

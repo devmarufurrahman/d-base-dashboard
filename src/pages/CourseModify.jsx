@@ -20,10 +20,10 @@ const normFile = (e) => {
 	return e?.fileList;
 };
 
-const StudentModify = () => {
+const CourseModify = () => {
 	return (
 		<>
-			<Typography.Title>Student Data modified</Typography.Title>
+			<Typography.Title>Course List</Typography.Title>
 			<Form
 				labelCol={{
 					span: 4,
@@ -33,19 +33,16 @@ const StudentModify = () => {
 				}}
 				layout="horizontal"
 				style={{
-					maxWidth: 600,
+					maxWidth: 800,
 				}}>
-				<Form.Item label="First Name">
+				<Form.Item label="Course Name">
 					<Input />
 				</Form.Item>
-				<Form.Item label="Last Name">
+				<Form.Item label="Mentor Name">
 					<Input />
 				</Form.Item>
-				<Form.Item label="Institute Name">
+				<Form.Item label="Designation Name">
 					<Input />
-				</Form.Item>
-				<Form.Item label="Birth Date">
-					<DatePicker />
 				</Form.Item>
 				<Form.Item label="Id Number">
 					<InputNumber />
@@ -82,10 +79,10 @@ const StudentModify = () => {
 							},
 						]}
 					/>
-				</Form.Item>
+				</Form.Item>*/}
 				<Form.Item label="RangePicker">
 					<RangePicker />
-				</Form.Item> */}
+				</Form.Item>
 				<Form.Item label="Description">
 					<TextArea rows={4} />
 				</Form.Item>
@@ -114,4 +111,4 @@ const StudentModify = () => {
 	);
 };
 
-export default StudentModify;
+export default CourseModify;

@@ -119,8 +119,7 @@ const items = [
 	getItem("Dashboard", "/", <DashboardOutlined />),
 	getItem("Courses", "/course", <ReadOutlined />, [
 		getItem("Course List", "/course"),
-		getItem("Bill", "4"),
-		getItem("Alex", "5"),
+		getItem("List Add", "/course-edit"),
 	]),
 	getItem("Students", "/students", <TeamOutlined />, [
 		getItem("Students List", "/students"),
